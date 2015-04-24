@@ -13,6 +13,7 @@ latest04 = da35164.0004[which(da35164.0004$YEARQ == '2013.4'),
 
 m1 <- merge(latest03, latest04, all.x = TRUE) # We want all responses, even those without crimes in set 04
 od <- merge(latest02, m1) # We only want household data for people we have responses from in sets 03 and 04
+od <- unique(od)
 
 rm(da35164.0002, da35164.0003, da35164.0004, latest02, latest03, latest04, m1)
 
