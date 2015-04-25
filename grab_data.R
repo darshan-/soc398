@@ -15,7 +15,12 @@ m1 <- merge(latest03, latest04, all.x = TRUE) # We want all responses, even thos
 od <- merge(latest02, m1) # We only want household data for people we have responses from in sets 03 and 04
 od$IDHH <- NULL
 od <- unique(od)
+od$IDPER <- as.numeric(od$IDPER)
 
 rm(da35164.0002, da35164.0003, da35164.0004, latest02, latest03, latest04, m1)
 
 save.image('our_data.Rdata')
+
+
+## duplicates:
+## subset(od, IDPER %in% od[which(duplicated(od$IDPER)), 'IDPER'])
