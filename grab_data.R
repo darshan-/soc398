@@ -8,7 +8,7 @@ latest03 = da35164.0003[which(da35164.0003$YEARQ == '2013.4'),
     c('IDHH', 'IDPER', 'V3013', 'V3017', 'V3020', 'V3023A', 'V3034', 'V3036',
       'V3038', 'V3042', 'V3046', 'V3072', 'V3081')]
 latest04 = da35164.0004[which(da35164.0004$YEARQ == '2013.4'),
-    c('IDHH', 'IDPER', 'V4016', 'V4066', 'V4067', 'V4068', 'V4069', 'V4070',
+    c('IDHH', 'IDPER', 'V4066', 'V4067', 'V4068', 'V4069', 'V4070',
       'V4071', 'V4072', 'V4073', 'V4074', 'V4075', 'V4479')]
 
 m1 <- merge(latest03, latest04, all.x = TRUE) # We want all responses, even those without crimes in set 04
