@@ -1,35 +1,9 @@
-
-## Two strongest correlations I found by trying a few I expected to correlate aren't that strong:
-
-## education and age:
-## cor(od$V3020, od$V3013, use = 'complete.obs')
-##[1] 0.215417
-
-## education and poverty
-##> cor(od$V3020, od$poverty, use = 'complete.obs')
-##[1] -0.2147437
-
-## We only have 5215 complete cases:
-##>length(od[which(complete.cases(od)),]$crime)
-##[1] 5215
-
-##> cor(od$crime, od$poverty, use = 'complete.obs')
-##[1] 0.092199
-
+## cor(od$crime, od$poverty, use = 'complete.obs')
 
 load('od.Rdata')
 
-od[which(od$V3020 == 98),]$V3020 = NA
-od$education <- factor(od$V3020)
-od <- within(od, education <- relevel(education, ref = '28'))
-
-#summary(lm(od$crime ~ od$poverty + od$V3020 + od$V3023A + od$V3013 + od$V3017))
-#summary(lm(od$property ~ od$poverty + od$V3020 + od$V3023A + od$V3013 + od$V3017))
-#summary(lm(od$violent ~ od$poverty + od$V3020 + od$V3023A + od$V3013 + od$V3017))
-
-
 options('scipen'=2)
 
-summary(lm(od$crime ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
-summary(lm(od$property ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
-summary(lm(od$violent ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
+summary(lm(od$crime ~ od$poverty + od$education + factor(od$V3023A) + od$age + od$sex))
+summary(lm(od$property ~ od$poverty + od$education + factor(od$V3023A) + od$age + od$sex))
+summary(lm(od$violent ~ od$poverty + od$education + factor(od$V3023A) + od$age + od$sex))

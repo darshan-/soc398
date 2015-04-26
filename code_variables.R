@@ -56,4 +56,16 @@ od$V2026 <- NULL
 
 rm(residueIncomeIsNA, poverty)
 
+od$sex <- od$V3017
+od$V3017 <- NULL
+od$age <- od$V3013
+od$V3013 <- NULL
+
+## code od$education according to $V3020 and our agreed-upon policy
+
+od[which(od$V3020 == 98),]$V3020 = NA
+od$education <- factor(od$V3020)
+od <- within(od, education <- relevel(education, ref = '28'))
+
+
 save.image('od.Rdata')
