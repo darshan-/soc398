@@ -28,6 +28,8 @@ od <- within(od, education <- relevel(education, ref = '28'))
 #summary(lm(od$violent ~ od$poverty + od$V3020 + od$V3023A + od$V3013 + od$V3017))
 
 
+options('scipen'=2)
+
 summary(lm(od$crime ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
 summary(lm(od$property ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
 summary(lm(od$violent ~ od$poverty + od$education + factor(od$V3023A) + od$V3013 + od$V3017))
