@@ -24,6 +24,10 @@ od$IDPER <- NULL
 ##rm(da35164.0002, da35164.0003, da35164.0004, latest02, latest03, latest04, m1)
 rm(da35164.0002, da35164.0003, latest02, latest03)
 
+
+## Drop 5645 minors:
+od <- od[which(od$V3013 >= 18),]
+
 save.image('our_data01.Rdata')
 
 
