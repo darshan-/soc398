@@ -6,7 +6,7 @@ latest02 = da35164.0002[which(da35164.0002$YEARQ == '2013.4'),
     c('IDHH', 'V2026', 'V2071', 'V2072')]
 latest03 = da35164.0003[which(da35164.0003$YEARQ == '2013.4'),
     c('IDHH', 'IDPER', 'V3013', 'V3017', 'V3020', 'V3023A', 'V3034', 'V3036',
-      'V3038', 'V3042', 'V3046', 'V3072', 'V3081')]
+      'V3038', 'V3042', 'V3046', 'V3072')]
 ##latest04 = da35164.0004[which(da35164.0004$YEARQ == '2013.4'),
 ##    c('IDHH', 'IDPER', 'V4066', 'V4067', 'V4068', 'V4069', 'V4070',
 ##      'V4071', 'V4072', 'V4073', 'V4074', 'V4075')]
@@ -16,12 +16,15 @@ latest03 = da35164.0003[which(da35164.0003$YEARQ == '2013.4'),
 od <- merge(latest02, latest03)
 od$IDHH <- NULL
 ##od <- unique(od)
-od$IDPER <- as.numeric(od$IDPER)
+
+
+####od$IDPER <- as.numeric(od$IDPER)
+od$IDPER <- NULL
 
 ##rm(da35164.0002, da35164.0003, da35164.0004, latest02, latest03, latest04, m1)
 rm(da35164.0002, da35164.0003, latest02, latest03)
 
-save.image('our_data.Rdata')
+save.image('our_data01.Rdata')
 
 
 ## duplicates:
