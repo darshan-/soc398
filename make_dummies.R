@@ -32,11 +32,11 @@ poverty <- function(row) {
 }
 
 property <- function(row) {
-    as.numeric(row$V3034) == 1 || as.numeric(row$V3036) == 1 || as.numeric(row$V3038 == 1)
+    row$V3034 == 1 || row$V3036 == 1 || row$V3038 == 1
 }
 
 violent <- function(row) {
-    as.numeric(row$V3042) == 1 || as.numeric(row$V3046) == 1
+    row$V3042 == 1 || row$V3046 == 1
 }
 
 crime <- function(row) {
@@ -46,16 +46,9 @@ crime <- function(row) {
 od$hhincome <- lapply(as.numeric(od$V2026), residueIncomeIsNA)
 
 od$poverty <- apply(od[c('hhincome', 'hhsize')], MARGIN=1, poverty)
-#od$property <- apply(od[c('V3034', 'V3036', 'V3038')], MARGIN=1, property)
-#od$violent <- apply(od[c('V3042', 'V3046')], MARGIN=1, violent)
-#od$crime <- apply(od[c('property', 'violent')], MARGIN=1, crime)
 od$property <- apply(od, MARGIN=1, property)
 od$violent <- apply(od, MARGIN=1, violent)
 od$crime <- apply(od, MARGIN=1, crime)
-
-### Verify:
-## page(od[c('V2026', 'hhsize', 'hhincome', 'poverty')], method = 'print')
-### Seems perfect!
 
 od$hhincome <- NULL
 od$hhsize <- NULL
