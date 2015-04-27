@@ -62,9 +62,9 @@ od$age <- od$V3013
 od$V3013 <- NULL
 
 edLevel <- function(e) {
-    if (e < 12)
+    if (e < 13 || e == 27)  # Consider 12 and 27 ("12th grade (no diploma)") as not finished high school
         'lths'
-    else if (e < 42) # Consider 12 and 27 ("12th grade (no diploma)") as finished high school
+    else if (e < 42)
         'hs'
     else if (e < 43)
         'bd'
