@@ -61,11 +61,23 @@ od$V3017 <- NULL
 od$age <- od$V3013
 od$V3013 <- NULL
 
-## code od$education according to $V3020 and our agreed-upon policy
+edLevel <- function(e) {
+    if (e < 12)
+        'lths'
+    else if (e < 42) # Consider 12 and 27 ("12th grade (no diploma)") as finished high school
+        'hs'
+    else if (e < 43)
+        'bd'
+    else if (e <=45)
+        'gd'
+    else # 98 (Residual)
+        NA
+}
 
-od[which(od$V3020 == 98),]$V3020 = NA
-od$education <- factor(od$V3020)
-od <- within(od, education <- relevel(education, ref = '28'))
+od$education <- unlist(lapply(od$V3020, edLevel))
+
+od$education <- factor(od$education)
+od <- within(od, education <- relevel(education, ref = 'hs'))
 
 
 save.image('od.Rdata')
