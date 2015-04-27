@@ -74,10 +74,25 @@ edLevel <- function(e) {
         NA
 }
 
-od$education <- unlist(lapply(od$V3020, edLevel))
+raceLevel <- function(r) {
+    if (r == 1)
+        'white'
+    else if (r == 2)
+        'black'
+    else if (r == 3)
+        'native'
+    else if (r == 4)
+        'asian'
+    else
+        'other'
+}
 
+od$education <- unlist(lapply(od$V3020, edLevel))
 od$education <- factor(od$education)
 od <- within(od, education <- relevel(education, ref = 'hs'))
 
+od$race <- unlist(lapply(od$V3023A, raceLevel))
+od$race <- factor(od$race)
+od <- within(od, race <- relevel(race, ref = 'white'))
 
 save.image('od.Rdata')
