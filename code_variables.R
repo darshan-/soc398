@@ -50,8 +50,8 @@ od$property <- apply(od, MARGIN=1, property)
 od$violent <- apply(od, MARGIN=1, violent)
 od$crime <- apply(od, MARGIN=1, crime)
 
-od$hhincome <- NULL
-od$hhsize <- NULL
+#od$hhincome <- NULL
+#od$hhsize <- NULL
 od$V2026 <- NULL
 
 rm(residueIncomeIsNA, poverty)
@@ -94,5 +94,8 @@ od <- within(od, education <- relevel(education, ref = 'hs'))
 od$race <- unlist(lapply(od$V3023A, raceLevel))
 od$race <- factor(od$race)
 od <- within(od, race <- relevel(race, ref = 'white'))
+
+od <- od[which(!is.na(od$poverty)),]
+od <- od[which(!is.na(od$education)),]
 
 save.image('od.Rdata')
