@@ -43,11 +43,23 @@ nBD / nTotal
 nGD / nTotal
 
 print(nPoverty <- length(od[which(od$poverty == TRUE), ]$poverty))
-print(nPoverty <- length(od[which(od$poverty == FALSE), ]$poverty))
+nPoverty <- length(od[which(od$poverty == FALSE), ]$poverty)
 
 nPoverty / nTotal
 
 print(nCrime <- length(od[which(od$crime == TRUE), ]$crime))
-print(nCrime <- length(od[which(od$crime == FALSE), ]$crime))
+length(od[which(od$crime == FALSE), ]$crime)
 
 nCrime / nTotal
+
+poverty <- od[which(od$poverty == TRUE), ]
+crime <- od[which(od$crime == TRUE), ]
+
+print(nPoverty <- length(poverty$poverty))
+print(nCrime <- length(crime$crime))
+
+print(nPovertyAndCrime <- length(poverty[which(poverty$crime == TRUE), ]$crime))
+print(nPovertyAndNotCrime <- nPoverty - nPovertyAndCrime)
+print(nCrimeAndNotPoverty <- length(crime[which(crime$poverty == FALSE), ]$crime))
+
+print(nNotPovertyAndNotCrime <- nTotal - nPoverty - nCrime + nPovertyAndCrime)
