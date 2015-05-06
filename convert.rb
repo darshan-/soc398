@@ -6,7 +6,7 @@ capturing = false
 
 $stdin.readlines.each do |line|
   #puts line
-  if line =~ />,summary\(lm\(od\$([a-z]+),/
+  if line =~ />,summary\(glm\(od\$([a-z]+),/
     type = $1
   end
 
