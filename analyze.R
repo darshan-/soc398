@@ -5,35 +5,35 @@ load('od.Rdata')
 options('scipen'=2)
 
 # Just DV and IV
-crime <- glm(od$crime ~ od$poverty, family = binomial(logit)) 
-poverty <- glm(od$property ~ od$poverty, family = binomial(logit))
+crime <- glm(od$crime ~ od$poverty, family = binomial(logit))
+property <- glm(od$property ~ od$poverty, family = binomial(logit))
 violent <- glm(od$violent ~ od$poverty, family = binomial(logit))
 
 summary(crime)
-summary(poverty)
+summary(property)
 summary(violent)
 
 exp(coef(crime))
-exp(coef(poverty))
+exp(coef(property))
 exp(coef(violent))
 
 logLik(crime)
-logLik(poverty)
+logLik(property)
 logLik(violent)
 
 # DV, IV, and controls
 crime <- glm(od$crime ~ od$poverty + od$education + od$race + od$age + od$sex, family = binomial(logit)) 
-poverty <- glm(od$property ~ od$poverty + od$education + od$race + od$age + od$sex, family = binomial(logit))
+property <- glm(od$property ~ od$poverty + od$education + od$race + od$age + od$sex, family = binomial(logit))
 violent <- glm(od$violent ~ od$poverty + od$education + od$race + od$age + od$sex, family = binomial(logit))
 
 summary(crime)
-summary(poverty)
+summary(property)
 summary(violent)
 
 exp(coef(crime))
-exp(coef(poverty))
+exp(coef(property))
 exp(coef(violent))
 
 logLik(crime)
-logLik(poverty)
+logLik(property)
 logLik(violent)
